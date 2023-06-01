@@ -1,2 +1,3 @@
-# Spritn_3
+# Sprint_3
 Yandex practicum
+Final task
