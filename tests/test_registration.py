@@ -1,4 +1,4 @@
-from fak12231er import Faker
+from faker import Faker
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from locators import Locators
@@ -13,15 +13,15 @@ class TestStellarburgersRegistration:
         driver.find_element(*Locators.ENTER_ACCOUNT_BUTTON).click()
         WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.AUTHORIZATION_PANEL))
         driver.find_element(*Locators.REGISTRATION_FIELD_BUTTON).click()
-        WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.NAME_FIELD_REGISTRATION))
-        driver.find_element(*Locators.NAME_FIELD_REGISTRATION).send_keys(name)
-        driver.find_element(*Locators.EMAIL_FIELD_REGISTRATION).send_keys(email)
-        driver.find_element(*Locators.PSSWRD_FIELD_REGISTRATION).send_keys('psswrd')
+        WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.NAME_FIELD))
+        driver.find_element(*Locators.NAME_FIELD).send_keys(name)
+        driver.find_element(*Locators.EMAIL_FIELD).send_keys(email)
+        driver.find_element(*Locators.PSSWRD_FIELD).send_keys('psswrd')
         driver.find_element(*Locators.REGISTRATION_PUSH_BUTTON).click()
         WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.AUTHORIZATION_PANEL))
-        driver.find_element(*Locators.EMAIL_FIELD_AUTHORIZATION).send_keys(email)
-        driver.find_element(*Locators.PASS_FIELD_AUTHORIZATION).send_keys('psswrd')
-        driver.find_element(*Locators.ENTER_BUTTON_AUTH_FORM).click()
+        driver.find_element(*Locators.EMAIL_FIELD).send_keys(email)
+        driver.find_element(*Locators.PSSWRD_FIELD).send_keys('psswrd')
+        driver.find_element(*Locators.LOGIN_BUTTON).click()
         WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.CHECKOUT_ORDER))
         assert driver.find_element(*Locators.CHECKOUT_ORDER).text == 'Оформить заказ'
 
@@ -31,10 +31,10 @@ class TestStellarburgersRegistration:
         driver.find_element(*Locators.ENTER_ACCOUNT_BUTTON).click()
         WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.AUTHORIZATION_PANEL))
         driver.find_element(*Locators.REGISTRATION_FIELD_BUTTON).click()
-        WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.NAME_FIELD_REGISTRATION))
-        driver.find_element(*Locators.NAME_FIELD_REGISTRATION).send_keys(name)
-        driver.find_element(*Locators.EMAIL_FIELD_REGISTRATION).send_keys(email)
-        driver.find_element(*Locators.PSSWRD_FIELD_REGISTRATION).send_keys('123')
+        WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.NAME_FIELD))
+        driver.find_element(*Locators.NAME_FIELD).send_keys(name)
+        driver.find_element(*Locators.EMAIL_FIELD).send_keys(email)
+        driver.find_element(*Locators.PSSWRD_FIELD).send_keys('123')
         driver.find_element(*Locators.REGISTRATION_PUSH_BUTTON).click()
         WebDriverWait(driver, 15).until(ec.visibility_of_element_located(Locators.WRONG_PASS_MESSAGE))
         assert driver.find_element(*Locators.WRONG_PASS_MESSAGE).text == 'Некорректный пароль'
